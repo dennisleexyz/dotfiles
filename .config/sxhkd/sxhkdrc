@@ -136,6 +136,7 @@ XF86MyComputer
 	$TERMINAL -e $FILE /
 
 # Function keys
+super + shift + F1
 # Show readme
 super + F1
 	groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -
