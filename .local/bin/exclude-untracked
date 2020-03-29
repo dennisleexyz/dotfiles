@@ -1,0 +1,4 @@
+#!/bin/sh
+gitdir="`git rev-parse --absolute-git-dir`/info/exclude"
+echo '\n' >> $gitdir/info/exclude
+git status -s | grep \?\? |  awk '{ print $2 }' >> $gitdir/info/exclude
