@@ -20,6 +20,9 @@ for_window [class="^.*"] border pixel 1
 gaps inner 0
 gaps outer 0
 
+# #---Borders---# #
+smart_borders on
+
 # #---Dropdown Windows---# #
 # General dropdown window traits. The order can matter.
 for_window [instance="dropdown_*"] floating enable
