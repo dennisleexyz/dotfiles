@@ -20,6 +20,9 @@ mpd-module-update &	# Check for when to update the mpd module
 fcitx &			# Input method
 redshift &		# adjusts the color temperature
 
+# ~/ Clean-up:
+rm .xsession-errors .xsession-errors.old
+
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\
 fi=📃:\
