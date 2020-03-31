@@ -77,7 +77,7 @@ bindsym $mod+r 			exec $term -e lf
 bindsym $mod+Shift+r		exec --no-startup-id winresize
 
 bindsym $mod+t			split toggle
-#bindsym $mod+Shift+t
+bindsym $mod+Shift+t		exec syncthing -browser-only
 
 bindsym $mod+y			exec $term -e calcurse
 bindsym $mod+Shift+y		exec --no-startup-id i3resize left
