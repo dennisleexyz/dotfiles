@@ -1,6 +1,6 @@
 #!/bin/sh
 if [ $1 == exclude ]; then
-	gitdir="`git rev-parse --absolute-git-dir`/info/exclude"
+	gitdir="`git rev-parse --absolute-git-dir`"
 	echo '\n' >> $gitdir/info/exclude
 	git status -s | grep \?\? |  awk '{ print $2 }' >> $gitdir/info/exclude
 elif [ $1 == rm ]; then
