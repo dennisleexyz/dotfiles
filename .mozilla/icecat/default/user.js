@@ -1,0 +1,12 @@
+user_pref("accessibility.force_disabled", 1);
+user_pref("browser.link.open_newwindow", 2);
+user_pref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
+user_pref("browser.newtabpage.activity-stream.prerender", false);
+user_pref("browser.newtabpage.activity-stream.showSearch", false);
+user_pref("browser.newtabpage.activity-stream.showTopSites", false);
+user_pref("browser.startup.page", 0);
+user_pref("browser.tabs.loadInBackground", false);
+user_pref("browser.tabs.warnOnClose", false);
+user_pref("browser.uidensity", 1);
+user_pref("general.warnOnAboutConfig", false);
+user_pref("signon.rememberSignons", false);
