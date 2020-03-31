@@ -24,6 +24,7 @@ export INPUTRC="$HOME/.config/inputrc"
 export ZDOTDIR="$HOME/.config/zsh"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
+export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
@@ -37,6 +38,7 @@ export LESS_TERMCAP_so="$(printf '%b' '[01;44;33m')"
 export LESS_TERMCAP_se="$(printf '%b' '[0m')"
 export LESS_TERMCAP_us="$(printf '%b' '[1;32m')"
 export LESS_TERMCAP_ue="$(printf '%b' '[0m')"
+export MOZ_USE_XINPUT2="1"
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
