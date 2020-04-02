@@ -10,7 +10,7 @@ export LARBSWM="$(cat ~/.local/share/larbs/wm 2>/dev/null)" &&
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="icecat"
 export READER="zathura"
 export STATUSBAR="${LARBSWM}blocks"
 
@@ -29,6 +29,7 @@ export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME/android"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
