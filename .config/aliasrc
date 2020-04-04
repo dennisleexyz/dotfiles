@@ -42,6 +42,5 @@ alias mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)"
 # Some other stuff
 alias \
 	magit="nvim -c MagitOnly" \
-	ref="shortcuts >/dev/null; source ~/.config/shortcutrc" \
-	weath="less -S ~/.local/share/weatherreport" \
-	calcurse="calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse"
+	ref="shortcuts >/dev/null; source $XDG_CONFIG_HOME/shortcutrc" \
+	weath="less -S $XDG_DATA_HOME/weatherreport" \
