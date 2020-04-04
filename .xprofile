@@ -19,6 +19,7 @@ unclutter &		# Remove mouse when idle
 mpd-module-update &	# Check for when to update the mpd module
 fcitx &			# Input method
 redshift &		# adjusts the color temperature
+ferdi &
 syncthing -no-browser	# peer-to-peer synchronization solution
 
 #xsetwacom set 16 MapToOutput LVDS1
