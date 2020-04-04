@@ -1,0 +1,34 @@
+#!/bin/bash
+relative=false
+while getopts ":d:rnahc" o; do case "${o}" in
+	d) display=${OPTARG} ;;
+	r) relative=true ;;
+	n) chosen=0 ;;
+	a) chosen=1 ;;
+	h) chosen=2 ;;
+	c) chosen=3 ;;
+esac done
+case "$relative" in
+	true)
+		case $(xrandr -q --verbose | grep "$display connected" | grep -Eo '\) (normal|left|inverted|right) \(' | grep -Eo '(normal|left|inverted|right)') in
+			normal) xrandr=("normal" "left" "inverted" "right") ;;
+			left) xrandr=("left" "inverted" "right" "normal") ;;
+			inverted) xrandr=("inverted" "right" "normal" "left") ;;
+			right) xrandr=("right" "normal" "left" "inverted") ;;
+		esac
+		;;
+	false)
+		xrandr=("normal" "left" "inverted" "right")
+		;;
+esac
+orientation=${xrandr["$chosen"]}
+xrandr --output $display --rotate $orientation
+case "$orientation" in
+	left) rotation="ccw" ;;
+	right) rotation="cw" ;;
+	inverted) rotation="half" ;;
+	normal) rotation="none" ;;
+esac
+xsetwacom set 16 rotate $rotation
+xsetwacom set 17 rotate $rotation
+xsetwacom set 23 rotate $rotation

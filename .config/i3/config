@@ -16,7 +16,7 @@ set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
 set $hibernate sudo -A systemctl suspend
 
 # #---Gaps---# #
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 2
 gaps inner 0
 gaps outer 0
 
@@ -79,7 +79,7 @@ bindsym $mod+Shift+r		exec --no-startup-id winresize
 bindsym $mod+t			split toggle
 bindsym $mod+Shift+t		exec syncthing -browser-only
 
-bindsym $mod+y			exec $term -e calcurse
+bindsym $mod+y			exec $term -e calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse
 bindsym $mod+Shift+y		exec --no-startup-id i3resize left
 
 bindsym $mod+u			exec --no-startup-id ddspawn tmuxdd
@@ -101,7 +101,7 @@ bindsym $mod+s			exec passmenu
 bindsym $mod+Shift+s		exec passmenu --type
 
 bindsym $mod+d			exec --no-startup-id dmenu_run
-#bindsym $mod+Shift+d
+bindsym $mod+Shift+d		exec xournalpp
 
 set $freeze Distraction-free mode (super+shift+f to reactivate bindings)
 mode "$freeze" { bindsym $mod+Shift+f mode "default"
@@ -295,8 +295,8 @@ bindsym XF86Explorer		exec $term -e lf
 bindsym XF86WWW			exec --no-startup-id $BROWSER
 ##bindsym XF86DOS		exec
 bindsym XF86ScreenSaver		exec exec --no-startup-id lockscreen
-##bindsym XF86RotateWindows	exec
-##bindsym XF86TaskPane		exec
+bindsym XF86RotateWindows	exec rotate -d LVDS1 -hr
+bindsym XF86TaskPane		exec rotate -d LVDS1 -cr
 ##bindsym XF86Favorites		exec
 bindsym XF86MyComputer		exec $term -e lf
 ##bindsym XF86Back		exec

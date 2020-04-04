@@ -129,7 +129,9 @@ XF86DOS
 XF86ScreenSaver
 	mpc pause; pauseallmpv; i3lock -e -f -c 1d2021; xset dpms force off
 XF86TaskPane
-	$TERMINAL -e htop
+	exec rotate -d LVDS1 -hr
+XF86TaskPane
+	exec rotate -d LVDS1 -cr
 XF86Mail
 	$TERMINAL -e neomutt
 XF86MyComputer
