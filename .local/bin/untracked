@@ -1,4 +1,8 @@
 #!/bin/sh
+# Operates on untracked files of the current git repository.
+# `untracked exclude` excludes all currently untracked files.
+# `untracked rm` removes all currently untracked files.
+
 if [ $1 == exclude ]; then
 	gitdir="`git rev-parse --absolute-git-dir`"
 	echo '\n' >> $gitdir/info/exclude
