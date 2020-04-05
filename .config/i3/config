@@ -101,7 +101,7 @@ bindsym $mod+s			exec passmenu
 bindsym $mod+Shift+s		exec passmenu --type
 
 bindsym $mod+d			exec --no-startup-id dmenu_run
-bindsym $mod+Shift+d		exec xournalpp
+bindsym $mod+Shift+d		exec thunderbird
 
 set $freeze Distraction-free mode (super+shift+f to reactivate bindings)
 mode "$freeze" { bindsym $mod+Shift+f mode "default"
