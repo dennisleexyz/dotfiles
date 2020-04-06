@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Maps the Wacom digitizer of the Lenovo Thinkpad x230 Tablet to be used with a
+# specified external or internal display. TODO: generalize for different
+# hardware.
+
+xsetwacom set 16 MapToOutput LVDS1
+xsetwacom set 23 MapToOutput LVDS1
+
+# Get all possible displays
+#allposs=$(xrandr -q | grep "connected")
+
+# Get all connected screens.
+#screens=$(echo "$allposs" | grep " connected" | awk '{print $1}')
+
+#chosen=$(echo "$screens" | dmenu -i -p "MapToOutput")
+
+#devices=$(xsetwacom list devices)
+
+#pen=$(echo $devices | grep -y "stylus\|eraser" | grep -o "id: [[:digit:]]*" | awk '{ print $2 }')
+
+# Touch devices are always mapped to the internal display.
+
+#xsetwacom set 17 MapToOutput LVDS1
+
+#touch=$(echo $devices | grep -y "touch" | grep -o "id: [[:digit:]]*" | awk '{ print $2 }')
