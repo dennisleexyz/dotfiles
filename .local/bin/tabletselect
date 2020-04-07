@@ -21,6 +21,6 @@ xsetwacom set 23 MapToOutput LVDS1
 
 # Touch devices are always mapped to the internal display.
 
-#xsetwacom set 17 MapToOutput LVDS1
+xsetwacom set 17 MapToOutput LVDS1
 
 #touch=$(echo $devices | grep -y "touch" | grep -o "id: [[:digit:]]*" | awk '{ print $2 }')
