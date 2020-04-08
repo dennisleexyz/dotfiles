@@ -9,6 +9,7 @@ dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XA
 
 # Initialize displays and wacom devices to sane (for me and my setup) defaults.
 xrandr --output DP2 --pos 1366x0 --mode 1920x1080 --auto --scale 1.0x1.0 --output LVDS1 --pos 0x156 --auto --scale 1.0x1.0
+xrandr --output DP2 --pos 1366x0 --mode 1920x1080 --auto --scale 1.0x1.0 --output LVDS1 --pos 0x156 --auto --scale 1.0x1.0
 xsetwacom set 16 MapToOutput LVDS1
 xsetwacom set 17 MapToOutput LVDS1
 xsetwacom set 23 MapToOutput LVDS1
