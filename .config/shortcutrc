@@ -10,6 +10,7 @@ cfmoz="cd ~/.mozilla && ls -a" \
 cfic="cd ~/.mozilla/icecat && ls -a" \
 sc="cd ~/.local/bin && ls -a" \
 mn="cd /mnt && ls -a" \
+rr="cd ~/.local/src && ls -a" \
 bf="$EDITOR ~/.config/files" \
 bd="$EDITOR ~/.config/directories" \
 bw="$EDITOR ~/.config/bookmarks" \
