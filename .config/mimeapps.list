@@ -1,4 +1,3 @@
-[Default Applications]
 text/x-shellscript=text.desktop;
 x-scheme-handler/magnet=torrent.desktop;
 application/x-bittorrent=torrent.desktop;
@@ -25,16 +24,4 @@ application/x-extension-shtml=userapp-IceCat-BXUCI0.desktop
 application/xhtml+xml=userapp-IceCat-BXUCI0.desktop
 application/x-extension-xhtml=userapp-IceCat-BXUCI0.desktop
 application/x-extension-xht=userapp-IceCat-BXUCI0.desktop
-
-[Added Associations]
-x-scheme-handler/http=userapp-IceCat-BXUCI0.desktop;
-x-scheme-handler/https=userapp-IceCat-BXUCI0.desktop;
-x-scheme-handler/ftp=userapp-IceCat-BXUCI0.desktop;
-x-scheme-handler/chrome=userapp-IceCat-BXUCI0.desktop;
-text/html=userapp-IceCat-BXUCI0.desktop;
-application/x-extension-htm=userapp-IceCat-BXUCI0.desktop;
-application/x-extension-html=userapp-IceCat-BXUCI0.desktop;
-application/x-extension-shtml=userapp-IceCat-BXUCI0.desktop;
-application/xhtml+xml=userapp-IceCat-BXUCI0.desktop;
-application/x-extension-xhtml=userapp-IceCat-BXUCI0.desktop;
 application/x-extension-xht=userapp-IceCat-BXUCI0.desktop;
