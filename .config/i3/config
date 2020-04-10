@@ -16,7 +16,7 @@ set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
 set $hibernate sudo -A systemctl suspend
 
 # #---Gaps---# #
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 gaps inner 0
 gaps outer 0
 
@@ -28,21 +28,16 @@ for_window [instance="dropdown_*"] sticky enable
 for_window [instance="dropdown_*"] scratchpad show
 for_window [instance="dropdown_tmuxdd"] resize set 625 450
 for_window [instance="dropdown_dropdowncalc"] resize set 800 300
-for_window [instance="dropdown_tmuxdd"] border pixel 1
-for_window [instance="dropdown_dropdowncalc"] border pixel 1
+for_window [instance="dropdown_tmuxdd"] border none
+for_window [instance="dropdown_dropdowncalc"] border none
 for_window [instance="dropdown_*"] move position center
 
 bar {
 	font pango:sans 10
 	status_command i3blocks
 	position top
-	mode dock
-	modifier None
-	colors {
-		background #0c0c0d
-		statusline #dadada
-		separator #dadada
-	}
+	mode hide
+	modifier $mod
 }
 
 # #---Basic Bindings---# #
@@ -211,7 +206,7 @@ bindsym $mod+Shift+9	move container to workspace $ws9
 bindsym $mod+Shift+0	move container to workspace $ws10
 
 for_window [class="Pinentry"] sticky enable
-for_window [class="sent"] border pixel 0px
+for_window [class="sent"] border none
 for_window [title="GIMP Startup"] move workspace $ws5
 for_window [class="Gimp"] move workspace $ws5
 for_window [window_role="GtkFileChooserDialog"] resize set 800 600
@@ -221,7 +216,7 @@ for_window [title="Default - Wine desktop"] floating enable
 # Bindings to make the webcam float and stick.
 for_window [title="mpvfloat"] floating enable
 for_window [title="mpvfloat"] sticky enable
-for_window [title="mpvfloat"] border pixel 0
+for_window [title="mpvfloat"] border none
 no_focus [title="mpvfloat"]
 
 # #---Function Buttons---# #
@@ -270,7 +265,7 @@ bindsym $mod+bracketright 	exec --no-startup-id mpc seek +10
 bindsym $mod+Shift+bracketright exec --no-startup-id mpc seek +120
 
 # For screenshots and recording
-bindsym Print 			exec --no-startup-id maim pic-full-"$(date '+%y%m%d-%H%M-%S').png"
+bindsym Print 			exec --no-startup-id maim $XDG_PICTURES_DIR/pic-full-"$(date '+%y%m%d-%H%M-%S').png"
 bindsym Shift+Print 		exec --no-startup-id maimpick
 bindsym $mod+Print		exec --no-startup-id dmenurecord
 bindsym $mod+Scroll_Lock	exec --no-startup-id "killall screenkey || screenkey"

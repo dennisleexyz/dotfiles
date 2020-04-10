@@ -67,5 +67,11 @@ lfcd () {
 
 bindkey -s '^o' 'lfcd\n'  # zsh
 
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_SEPARATE_LINE=false
+SPACESHIP_VI_MODE_SHOW=false
+autoload -U promptinit; promptinit
+prompt spaceship
+
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

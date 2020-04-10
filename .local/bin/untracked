@@ -2,11 +2,15 @@
 # Operates on untracked files of the current git repository.
 # `untracked exclude` excludes all currently untracked files.
 # `untracked rm` removes all currently untracked files.
-
+[ -z $1 ] && git status -s | grep \?\? |  awk '{ print $2 }' \
+	>> $gitdir/info/exclude
+elif [ $1 == rm ]; then
+	rm -r `git status -s | grep \?\? |  awk '{ print $2 }'`
+else
+	git status -s | grep \?\? |  awk '{ print $2 }'
 if [ $1 == exclude ]; then
 	gitdir="`git rev-parse --absolute-git-dir`"
 	echo '\n' >> $gitdir/info/exclude
 	git status -s | grep \?\? |  awk '{ print $2 }' >> $gitdir/info/exclude
 elif [ $1 == rm ]; then
 	rm -r `git status -s | grep \?\? |  awk '{ print $2 }'`
-fi

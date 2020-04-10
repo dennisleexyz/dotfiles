@@ -23,7 +23,7 @@
   "lockedPassword": "",
   "scheduledDNDEnabled": true,
   "scheduledDNDStart": "08:00",
-  "scheduledDNDEnd": "16:55",
+  "scheduledDNDEnd": "19:00",
   "hibernate": false,
   "hibernationStrategy": "10",
   "inactivityLock": 0,

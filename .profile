@@ -18,7 +18,7 @@ export STATUSBAR="${LARBSWM}blocks"
 eval "$(sed 's/^[^#].*/export &/g;t;d' ~/.config/user-dirs.dirs)"
 
 # ~/ Clean-up:
-#export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority" # This line will break some DMs.
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export LESSHISTFILE="-"
