@@ -7,17 +7,10 @@
 # Add this when you include flatpak in your system
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
-# Initialize displays and wacom devices to sane (for me and my setup) defaults.
-xrandr --output DP2 --pos 1366x0 --mode 1920x1080 --auto --scale 1.0x1.0 --output LVDS1 --pos 0x156 --auto --scale 1.0x1.0
-xrandr --output DP2 --pos 1366x0 --mode 1920x1080 --auto --scale 1.0x1.0 --output LVDS1 --pos 0x156 --auto --scale 1.0x1.0
-xsetwacom set 16 MapToOutput LVDS1
-xsetwacom set 17 MapToOutput LVDS1
-xsetwacom set 23 MapToOutput LVDS1
-
 mpd &			# music player daemon-you might prefer it as a service though
 remaps &		# run the remaps script, switching caps/esc and more; check it for more info
 setbg &			# set the background with the `setbg` script
-#xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &	# Uncomment to use Xresources colors/settings on startup
+xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &	# Uncomment to use Xresources colors/settings on startup
 xcompmgr &		# xcompmgr for transparency
 $STATUSBAR &		# start the statusbar
 dunst &			# dunst for notifications
@@ -30,8 +23,15 @@ ferdi &
 mailspring &
 syncthing -no-browser	# peer-to-peer synchronization solution
 
+# Initialize displays and wacom devices to sane (for me and my setup) defaults.
+xrandr --output DP2 --pos 1366x0 --mode 1920x1080 --auto --scale 1.0x1.0 --output LVDS1 --pos 0x156 --auto --scale 1.0x1.0
+xsetwacom set 16 MapToOutput LVDS1
+xsetwacom set 17 MapToOutput LVDS1
+xsetwacom set 23 MapToOutput LVDS1
+setbg
+
 # ~/ Clean-up:
-rm .xsession-errors .xsession-errors.old
+#rm .xsession-errors .xsession-errors.old
 
 # This is the list for lf icons:
 export LF_ICONS="di=📁:\
