@@ -39,3 +39,6 @@ mailspring &		# mail client written in TypeScript with Electron/React
 # program settings:
 export QT_QPA_PLATFORMTHEME="gtk2"
 export MOZ_USE_XINPUT2="1"
+export GTK_IM_MODULE="fcitx"
+export QT_IM_MODULE="fcitx"
+export XMODIFIERS=@im="fcitx"
