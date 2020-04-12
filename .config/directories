@@ -8,3 +8,4 @@ vv	~/Videos
 cf	${XDG_CONFIG_HOME:-$HOME/.config}
 sc	~/.local/bin
 mn	/mnt
+rr	~/.local/src
