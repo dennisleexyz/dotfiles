@@ -36,3 +36,5 @@ mailspring &		# mail client written in TypeScript with Electron/React
 # ~/ Clean-up:
 #rm .xsession-errors .xsession-errors.old
 
+# program settings:
+export QT_QPA_PLATFORMTHEME="gtk2"
