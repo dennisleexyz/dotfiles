@@ -77,8 +77,42 @@ bindkey '^[[P' delete-char
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+SPACESHIP_PROMPT_ORDER=(
+  time          # Time stamps section
+  dir           # Current directory section
+  git           # Git section (git_branch + git_status)
+  # hg            # Mercurial section (hg_branch  + hg_status)
+  # package       # Package version
+  # node          # Node.js section
+  # ruby          # Ruby section
+  # elixir        # Elixir section
+  # xcode         # Xcode section
+  # swift         # Swift section
+  # golang        # Go section
+  # php           # PHP section
+  # rust          # Rust section
+  # haskell       # Haskell Stack section
+  # julia         # Julia section
+  # docker        # Docker section
+  # aws           # Amazon Web Services section
+  # venv          # virtualenv section
+  # conda         # conda virtualenv section
+  # pyenv         # Pyenv section
+  # dotnet        # .NET section
+  # ember         # Ember.js section
+  # kubectl       # Kubectl context section
+  # terraform     # Terraform workspace section
+  exec_time     # Execution time
+  battery       # Battery level and status
+  jobs          # Background jobs indicator
+  exit_code     # Exit code section
+  char          # Prompt character
+)
 SPACESHIP_PROMPT_ADD_NEWLINE=false
 SPACESHIP_PROMPT_SEPARATE_LINE=false
+SPACESHIP_CHAR_SYMBOL=❯
+SPACESHIP_CHAR_SUFFIX=" "
+SPACESHIP_DIR_TRUNC=0
 SPACESHIP_GIT_PREFIX=''
 # SPACESHIP_GIT_STATUS_PREFIX=' '
 # SPACESHIP_GIT_STATUS_SUFFIX=''
@@ -92,7 +126,32 @@ SPACESHIP_GIT_PREFIX=''
 # SPACESHIP_GIT_STATUS_AHEAD=⬆
 # SPACESHIP_GIT_STATUS_BEHIND=⬇
 # SPACESHIP_GIT_STATUS_DIVERGED=↕
+SPACESHIP_HG_SHOW=false
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_NODE_SHOW=false
+SPACESHIP_RUBY_SHOW=false
+SPACESHIP_ELM_SHOW=false
+SPACESHIP_ELIXIR_SHOW=false
+SPACESHIP_XCODE_SHOW_LOCAL=false
+SPACESHIP_SWIFT_SHOW_LOCAL=false
+SPACESHIP_GOLANG_SHOW=false
+SPACESHIP_PHP_SHOW=false
+SPACESHIP_RUST_SHOW=false
+SPACESHIP_JULIA_SHOW=false
+SPACESHIP_DOCKER_SHOW=false
+SPACESHIP_DOCKER_CONTEXT_SHOW=false
+SPACESHIP_AWS_SHOW=false
+SPACESHIP_CONDA_SHOW=false
+SPACESHIP_VENV_SHOW=false
+SPACESHIP_PYENV_SHOW=false
+SPACESHIP_DOTNET_SHOW=false
+SPACESHIP_EMBER_SHOW=false
+SPACESHIP_KUBECONTEXT_SHOW=false
+SPACESHIP_TERRAFORM_SHOW=false
+SPACESHIP_EXEC_TIME_PREFIX=''
+SPACESHIP_EXEC_TIME_ELAPSED=1
 SPACESHIP_VI_MODE_SHOW=false
+#SPACESHIP_JOBS_SHOW=false
 autoload -U promptinit; promptinit
 prompt spaceship
 
