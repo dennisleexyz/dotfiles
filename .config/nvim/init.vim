@@ -28,6 +28,11 @@ set mouse=a
 set nohlsearch
 set clipboard+=unnamedplus
 
+"set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+
 " Some basics:
 	nnoremap c "_c
 	set nocompatible
@@ -38,7 +43,7 @@ set clipboard+=unnamedplus
 " Enable autocompletion:
 	set wildmode=longest,list,full
 " Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Goyo plugin makes text more readable when writing prose:
 	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
