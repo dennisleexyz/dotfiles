@@ -1,6 +1,5 @@
 user_pref("accessibility.force_disabled", 1);
-user_pref("browser.display.use_document_fonts", 0);
-user_pref("browser.link.open_newwindow", 2);
+user_pref("browser.link.open_newwindow", 3);
 user_pref("browser.newtabpage.activity-stream.feeds.section.highlights", false);
 user_pref("browser.newtabpage.activity-stream.prerender", false);
 user_pref("browser.newtabpage.activity-stream.showSearch", false);
@@ -14,3 +13,5 @@ user_pref("general.warnOnAboutConfig", false);
 user_pref("javascript.use_us_english_locale", true);
 user_pref("privacy.spoof_english", 2);
 user_pref("signon.rememberSignons", false);
+user_pref("browser.urlbar.clickSelectsAll", true);
+user_pref("browser.urlbar.doubleClickSelectsAll", false);
