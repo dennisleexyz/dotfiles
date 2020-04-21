@@ -34,28 +34,7 @@ alias \
 	p="sudo pacman" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove -R" \
-	xq="xbps-query" \
-	g='git' \
-	gst='git status' \
-	gc='git commit' \
-	ga='git add' \
-	gpl='git pull' \
-	gpom='git pull origin master' \
-	gpu='git push' \
-	gd='git diff' \
-	gch='git checkout' \
-	gnb='git checkout -b' \
-	gac='git add . && git commit' \
-	grs='git restore --staged .' \
-	gre='git restore' \
-	gr='git remote' \
-	gcl='git clone' \
-	glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold green)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold yellow)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all" \
-	gt='git ls-tree -r master --name-only' \
-	grm='git remote' \
-	gb='git branch' \
-	gm='git merge' \
-	gf='git fetch' \
+	xq="xbps-query"
 
 # Some other stuff
 alias \
