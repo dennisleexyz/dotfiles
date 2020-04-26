@@ -20,6 +20,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'kovetskiy/sxhkd-vim'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set bg=light

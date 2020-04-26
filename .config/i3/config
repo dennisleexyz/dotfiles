@@ -105,16 +105,16 @@ bindsym $mod+Shift+q		[con_id="__focused__" instance="^(?!dropdown_).*$"] exec -
 bindsym $mod+w			exec --no-startup-id $BROWSER
 bindsym $mod+Shift+w		exec $term -e nmtui
 
-bindsym $mod+e			exec $term -e neomutt && pkill -RTMIN+12 i3blocks
+bindsym $mod+e			exec mailspring
 bindsym $mod+Shift+e		exec --no-startup-id tutorialvids
 
 bindsym $mod+r 			exec $term -e lf
-bindsym $mod+Shift+r		exec --no-startup-id winresize
+bindsym $mod+Shift+r		reload
 
 bindsym $mod+t			split toggle
 bindsym $mod+Shift+t		exec syncthing -browser-only
 
-bindsym $mod+y			exec $term -e calcurse -C $XDG_CONFIG_HOME/calcurse -D $XDG_DATA_HOME/calcurse
+bindsym $mod+y			exec $term -e calcurse
 bindsym $mod+Shift+y		exec --no-startup-id i3resize left
 
 bindsym $mod+u			exec --no-startup-id ddspawn tmuxdd
@@ -136,7 +136,7 @@ bindsym $mod+s			exec passmenu -i
 bindsym $mod+Shift+s		exec passmenu --type -i
 
 bindsym $mod+d			exec --no-startup-id dmenu_run
-bindsym $mod+Shift+d		reload
+bindsym $mod+Shift+d		exec ferdi
 
 set $freeze Distraction-free mode (super+shift+f to reactivate bindings)
 mode "$freeze" { bindsym $mod+Shift+f mode "default"
@@ -146,7 +146,7 @@ bindsym $mod+f			fullscreen toggle
 bindsym $mod+Shift+f		mode "$freeze" ;; exec --no-startup-id notify-send "Distraction-free mode activated." "Press Super+Shift+f to return."
 
 bindsym $mod+g			workspace prev
-bindsym $mod+Shift+g		exec --no-startup-id gimp; workspace $ws5
+bindsym $mod+Shift+g		exec --no-startup-id gimp
 
 bindsym $mod+h			focus left
 bindsym $mod+Shift+h		move left 30
@@ -242,8 +242,8 @@ bindsym $mod+Shift+0	move container to workspace $ws10
 
 for_window [class="Pinentry"] sticky enable
 for_window [class="sent"] border none
-for_window [title="GIMP Startup"] move workspace $ws5
-for_window [class="Gimp"] move workspace $ws5
+assign [class="Xournal++"] output LVDS1
+assign [class="Polls"] output LVDS1
 for_window [window_role="GtkFileChooserDialog"] resize set 800 600
 for_window [window_role="GtkFileChooserDialog"] move position center
 for_window [title="Default - Wine desktop"] floating enable
@@ -300,7 +300,7 @@ bindsym $mod+bracketright 	exec --no-startup-id mpc seek +10
 bindsym $mod+Shift+bracketright exec --no-startup-id mpc seek +120
 
 # For screenshots and recording
-bindsym Print 			exec --no-startup-id maim $XDG_PICTURES_DIR/pic-full-"$(date '+%y%m%d-%H%M-%S').png"
+bindsym Print 			exec --no-startup-id maim ${XDG_PICTURES_DIR:-$HOME}/pic-full-"$(date '+%y%m%d-%H%M-%S').png"
 bindsym Shift+Print 		exec --no-startup-id maimpick
 bindsym $mod+Print		exec --no-startup-id dmenurecord
 bindsym $mod+Scroll_Lock	exec --no-startup-id "killall screenkey || screenkey"
@@ -330,8 +330,8 @@ bindsym XF86Explorer		exec $term -e lf
 bindsym XF86WWW			exec --no-startup-id $BROWSER
 ##bindsym XF86DOS		exec
 bindsym XF86ScreenSaver		exec exec --no-startup-id lockscreen
-bindsym XF86RotateWindows	exec rotate -d LVDS1 -hr
-bindsym XF86TaskPane		exec rotate -d LVDS1 -cr
+##bindsym XF86RotateWindows    exec
+##bindsym XF86TaskPane         exec
 ##bindsym XF86Favorites		exec
 bindsym XF86MyComputer		exec $term -e lf
 ##bindsym XF86Back		exec
