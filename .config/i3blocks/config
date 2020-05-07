@@ -16,8 +16,8 @@ signal=11
 interval=once
 signal=6
 
-[iplocate]
-interval=30
+#[iplocate]
+#interval=30
 
 [pacpackages]
 interval=once
@@ -31,9 +31,9 @@ signal=7
 interval=18000
 signal=5
 
-[mailbox]
-interval=180
-signal=12
+#[mailbox]
+#interval=180
+#signal=12
 
 [memory]
 interval=30
@@ -49,9 +49,9 @@ signal=10
 interval=60
 command=disk /
 
-[disk]
-interval=60
-command=disk /home
+#[disk]
+#interval=60
+#command=disk /home
 
 [battery]
 command=battery BAT0

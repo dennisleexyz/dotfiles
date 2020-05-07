@@ -28,8 +28,6 @@ for_window [instance="dropdown_*"] sticky enable
 for_window [instance="dropdown_*"] scratchpad show
 for_window [instance="dropdown_tmuxdd"] resize set 625 450
 for_window [instance="dropdown_dropdowncalc"] resize set 800 300
-for_window [instance="dropdown_tmuxdd"] border none
-for_window [instance="dropdown_dropdowncalc"] border none
 for_window [instance="dropdown_*"] move position center
 
 # Set Xresources colors:
@@ -240,18 +238,28 @@ bindsym $mod+Shift+8	move container to workspace $ws8
 bindsym $mod+Shift+9	move container to workspace $ws9
 bindsym $mod+Shift+0	move container to workspace $ws10
 
+workspace $ws1 output LVDS1
+workspace $ws2 output LVDS1
+workspace $ws3 output LVDS1
+workspace $ws4 output LVDS1
+workspace $ws5 output LVDS1
+workspace $ws10 output DP2
+workspace $ws9 output DP2
+workspace $ws8 output DP2
+workspace $ws7 output DP2
+workspace $ws6 output DP2
+
 for_window [class="Pinentry"] sticky enable
-for_window [class="sent"] border none
-assign [class="Xournal++"] output LVDS1
-assign [class="Polls"] output LVDS1
 for_window [window_role="GtkFileChooserDialog"] resize set 800 600
 for_window [window_role="GtkFileChooserDialog"] move position center
 for_window [title="Default - Wine desktop"] floating enable
+for_window [title="Event Tester"] floating enable
+assign [class="Xournal++"] output LVDS1
+assign [class="Polls"] output LVDS1
 
 # Bindings to make the webcam float and stick.
 for_window [title="mpvfloat"] floating enable
 for_window [title="mpvfloat"] sticky enable
-for_window [title="mpvfloat"] border none
 no_focus [title="mpvfloat"]
 
 # #---Function Buttons---# #

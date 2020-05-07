@@ -75,7 +75,6 @@ bindkey -s '^o' 'lfcd\n'
 # Control bindings for programs
 bindkey -s '^a' 'bc -l\n'
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
-bindkey -s "^h" "history 1\n"
 bindkey -s "^l" "clear\n"
 
 bindkey '^[[P' delete-char

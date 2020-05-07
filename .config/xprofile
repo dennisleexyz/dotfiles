@@ -11,6 +11,7 @@
 # Add this when you include flatpak in your system
 #dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
+screener &
 dynawall &			# set the background with the `dynawall` script
 mpd &			# music player daemon-you might prefer it as a service though
 remaps &		# run the remaps script, switching caps/esc and more; check it for more info
@@ -26,7 +27,8 @@ syncthing -no-browser	# peer-to-peer synchronization solution
 ferdi &			# combine messaging services into one application
 mailspring &		# TypeScript/Electron/React mail client with OAuth support
 
-[ -f "$HOME/.local/bin/personal/screener" ] && . "$HOME/.local/bin/personal/screener"
+checkup &		# Syncs repositories and downloads updates.
+newsup &		# check for new RSS entries for newsboat.
 
 # ~/ Clean-up:
 #rm .xsession-errors .xsession-errors.old

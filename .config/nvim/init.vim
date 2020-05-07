@@ -21,6 +21,7 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'lilydjwg/fcitx.vim'
 call plug#end()
 
 set bg=light
