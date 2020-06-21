@@ -1,3 +1,5 @@
+set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
+
 let mapleader =","
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
@@ -19,6 +21,8 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'ap/vim-css-color'
+Plug 'airblade/vim-gitgutter'
+Plug 'lilydjwg/fcitx.vim'
 call plug#end()
 
 set bg=light
@@ -26,6 +30,11 @@ set go=a
 set mouse=a
 set nohlsearch
 set clipboard+=unnamedplus
+
+"set expandtab
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
 
 " Some basics:
 	nnoremap c "_c
@@ -37,7 +46,7 @@ set clipboard+=unnamedplus
 " Enable autocompletion:
 	set wildmode=longest,list,full
 " Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Goyo plugin makes text more readable when writing prose:
 	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>

@@ -7,8 +7,6 @@
 # export TERMINAL="st"
 
 # #---Basic Definitions---# #
-set $inner_gaps 15
-set $outer_gaps 15
 set $term --no-startup-id $TERMINAL
 set $mod Mod4
 set $stoprec --no-startup-id dmenurecord kill
@@ -18,9 +16,9 @@ set $netrefresh --no-startup-id sudo -A systemctl restart NetworkManager
 set $hibernate sudo -A systemctl suspend
 
 # #---Gaps---# #
-for_window [class="^.*"] border pixel 2
-gaps inner $inner_gaps
-gaps outer $outer_gaps
+for_window [class="^.*"] border pixel 1
+gaps inner 0
+gaps outer 0
 
 # #---Dropdown Windows---# #
 # General dropdown window traits. The order can matter.
@@ -30,16 +28,49 @@ for_window [instance="dropdown_*"] sticky enable
 for_window [instance="dropdown_*"] scratchpad show
 for_window [instance="dropdown_tmuxdd"] resize set 625 450
 for_window [instance="dropdown_dropdowncalc"] resize set 800 300
-for_window [instance="dropdown_tmuxdd"] border pixel 3
-for_window [instance="dropdown_dropdowncalc"] border pixel 2
 for_window [instance="dropdown_*"] move position center
 
+# Set Xresources colors:
+set_from_resource $darkblack	color0  #000000
+set_from_resource $black	color8  #000000
+set_from_resource $darkred	color1  #000000
+set_from_resource $red		color9  #000000
+set_from_resource $darkgreen	color2  #000000
+set_from_resource $green	color10 #000000
+set_from_resource $darkyellow	color3  #000000
+set_from_resource $yellow	color11 #000000
+set_from_resource $darkblue	color4  #000000
+set_from_resource $blue		color12 #000000
+set_from_resource $darkmagenta	color5  #000000
+set_from_resource $magenta	color13 #000000
+set_from_resource $darkcyan	color6  #000000
+set_from_resource $cyan		color14 #000000
+set_from_resource $darkwhite	color7  #000000
+set_from_resource $white	color15 #000000
+set $transparent		#00000000
+
+#                       BORDER		BACKGROUND	TEXT		INDICATOR   	CHILD_BORDER
+client.focused		$red		$red		$magenta	$darkmagenta	$darkblue
+client.unfocused	$transparent	$blue		$white		$darkblue	$darkblack
+client.focused_inactive	$transparent	$blue		$white		$darkblue	$darkblack
+client.urgent		$darkred	$darkred	$black		$darkred	$darkred
+client.background $black
+
 bar {
-	font pango:mono 10
+	font pango:sans 10
+	colors {
+		background $darkblack
+		statusline $darkwhite
+		separator $cyan
+		focused_workspace  $blue $darkblue $darkblack
+       		active_workspace   $blue $blue $darkwhite
+      		inactive_workspace $darkblack $darkblack $white
+       		urgent_workspace   $darkblack $darkblack $white
+	}
 	status_command i3blocks
 	position top
-	mode dock
-	modifier None
+	mode hide
+	modifier $mod
 }
 
 # #---Basic Bindings---# #
@@ -72,14 +103,14 @@ bindsym $mod+Shift+q		[con_id="__focused__" instance="^(?!dropdown_).*$"] exec -
 bindsym $mod+w			exec --no-startup-id $BROWSER
 bindsym $mod+Shift+w		exec $term -e nmtui
 
-bindsym $mod+e			exec $term -e neomutt && pkill -RTMIN+12 i3blocks
+bindsym $mod+e			exec mailspring
 bindsym $mod+Shift+e		exec --no-startup-id tutorialvids
 
 bindsym $mod+r 			exec $term -e lf
-bindsym $mod+Shift+r		exec --no-startup-id winresize
+bindsym $mod+Shift+r		reload
 
 bindsym $mod+t			split toggle
-bindsym $mod+Shift+t		gaps inner current set $inner_gaps; gaps outer current set $outer_gaps
+bindsym $mod+Shift+t		exec syncthing -browser-only
 
 bindsym $mod+y			exec $term -e calcurse
 bindsym $mod+Shift+y		exec --no-startup-id i3resize left
@@ -99,11 +130,11 @@ bindsym $mod+Shift+p		exec --no-startup-id mpc pause
 bindsym $mod+a			exec --no-startup-id ddspawn dropdowncalc -f mono:pixelsize=24
 bindsym $mod+Shift+a		exec $term -e pulsemixer
 
-bindsym $mod+s			gaps inner current plus 5
-bindsym $mod+Shift+s		gaps inner current minus 5
+bindsym $mod+s			exec passmenu -i
+bindsym $mod+Shift+s		exec passmenu --type -i
 
 bindsym $mod+d			exec --no-startup-id dmenu_run
-bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+d		exec ferdi
 
 set $freeze Distraction-free mode (super+shift+f to reactivate bindings)
 mode "$freeze" { bindsym $mod+Shift+f mode "default"
@@ -113,7 +144,7 @@ bindsym $mod+f			fullscreen toggle
 bindsym $mod+Shift+f		mode "$freeze" ;; exec --no-startup-id notify-send "Distraction-free mode activated." "Press Super+Shift+f to return."
 
 bindsym $mod+g			workspace prev
-bindsym $mod+Shift+g		exec --no-startup-id gimp; workspace $ws5
+bindsym $mod+Shift+g		exec --no-startup-id gimp
 
 bindsym $mod+h			focus left
 bindsym $mod+Shift+h		move left 30
@@ -131,8 +162,8 @@ bindsym $mod+l			focus right
 bindsym $mod+Shift+l		move right 30
 bindsym $mod+Ctrl+l		move workspace to output right
 
-bindsym $mod+z			gaps outer current plus 5
-bindsym $mod+Shift+z		gaps outer current minus 5
+#bindsym $mod+z
+#bindsym $mod+Shift+z
 
 bindsym $mod+x			exec --no-startup-id xset dpms force off && mpc pause && pauseallmpv && slock &
 bindsym $mod+Shift+x		exec --no-startup-id prompt "Shutdown computer?" "$shutdown"
@@ -207,18 +238,28 @@ bindsym $mod+Shift+8	move container to workspace $ws8
 bindsym $mod+Shift+9	move container to workspace $ws9
 bindsym $mod+Shift+0	move container to workspace $ws10
 
+workspace $ws1 output LVDS1
+workspace $ws2 output LVDS1
+workspace $ws3 output LVDS1
+workspace $ws4 output LVDS1
+workspace $ws5 output LVDS1
+workspace $ws10 output DP2
+workspace $ws9 output DP2
+workspace $ws8 output DP2
+workspace $ws7 output DP2
+workspace $ws6 output DP2
+
 for_window [class="Pinentry"] sticky enable
-for_window [class="sent"] border pixel 0px
-for_window [title="GIMP Startup"] move workspace $ws5
-for_window [class="Gimp"] move workspace $ws5
 for_window [window_role="GtkFileChooserDialog"] resize set 800 600
 for_window [window_role="GtkFileChooserDialog"] move position center
 for_window [title="Default - Wine desktop"] floating enable
+for_window [title="Event Tester"] floating enable
+assign [class="Xournal++"] output LVDS1
+assign [class="Polls"] output LVDS1
 
 # Bindings to make the webcam float and stick.
 for_window [title="mpvfloat"] floating enable
 for_window [title="mpvfloat"] sticky enable
-for_window [title="mpvfloat"] border pixel 0
 no_focus [title="mpvfloat"]
 
 # #---Function Buttons---# #
@@ -234,7 +275,6 @@ bindsym $mod+F9		exec --no-startup-id dmenumount
 bindsym $mod+F10	exec --no-startup-id dmenuumount
 bindsym $mod+F11	exec --no-startup-id ducksearch
 bindsym $mod+F12	exec $term -e nmtui
-bindsym $mod+Shift+F1	exec --no-startup-id toggle-welcome
 
 # #---Arrow Keys---# #
 bindsym $mod+Left		focus left
@@ -268,7 +308,7 @@ bindsym $mod+bracketright 	exec --no-startup-id mpc seek +10
 bindsym $mod+Shift+bracketright exec --no-startup-id mpc seek +120
 
 # For screenshots and recording
-bindsym Print 			exec --no-startup-id maim pic-full-"$(date '+%y%m%d-%H%M-%S').png"
+bindsym Print 			exec --no-startup-id maim ${XDG_PICTURES_DIR:-$HOME}/pic-full-"$(date '+%y%m%d-%H%M-%S').png"
 bindsym Shift+Print 		exec --no-startup-id maimpick
 bindsym $mod+Print		exec --no-startup-id dmenurecord
 bindsym $mod+Scroll_Lock	exec --no-startup-id "killall screenkey || screenkey"
@@ -298,8 +338,8 @@ bindsym XF86Explorer		exec $term -e lf
 bindsym XF86WWW			exec --no-startup-id $BROWSER
 ##bindsym XF86DOS		exec
 bindsym XF86ScreenSaver		exec exec --no-startup-id lockscreen
-##bindsym XF86RotateWindows	exec
-##bindsym XF86TaskPane		exec
+##bindsym XF86RotateWindows    exec
+##bindsym XF86TaskPane         exec
 ##bindsym XF86Favorites		exec
 bindsym XF86MyComputer		exec $term -e lf
 ##bindsym XF86Back		exec

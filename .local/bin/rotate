@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# rotate -d <display> -<direction> [-r(elative)]
+
+# for <display> in `xrandr | grep ' connected' | awk '{print $1}'`
+
+# for <direction> in:
+# n (normal, none)
+# a (anticlockwise)
+# h (half)
+# c (clockwise)
+
+# TODO: remove -d option and interpret first argument as display, convert
+# directions to arguments, add long/alternate options
+# e.g. `rotate -r LVDS1 h`; `rotate LVDS1 inverted --relative`
+
+relative=false
+
+while getopts ":d:rnahc" o; do case "${o}" in
+	d) display=${OPTARG} ;;
+	r) relative=true ;;
+	n) chosen=0 ;;
+	a) chosen=1 ;;
+	h) chosen=2 ;;
+	c) chosen=3 ;;
+esac done
+
+case "$relative" in
+	true)
+		case $(xrandr -q --verbose \
+			| grep "$display connected" \
+			| grep -Eo '\) (normal|left|inverted|right) \(' \
+			| grep -Eo '(normal|left|inverted|right)') in
+			normal) xrandr=("normal" "left" "inverted" "right") ;;
+			left) xrandr=("left" "inverted" "right" "normal") ;;
+			inverted) xrandr=("inverted" "right" "normal" "left") ;;
+			right) xrandr=("right" "normal" "left" "inverted") ;;
+		esac
+		;;
+	false)
+		xrandr=("normal" "left" "inverted" "right")
+		;;
+esac
+
+orientation=${xrandr["$chosen"]}
+xrandr --output $display --rotate $orientation
+
+# Convert xrandr "$orientation" values to xsetwacom "$rotation" values.
+case "$orientation" in
+	left) rotation="ccw" ;;
+	right) rotation="cw" ;;
+	inverted) rotation="half" ;;
+	normal) rotation="none" ;;
+esac
+
+# TODO: xsetwacom device values are currently hardcoded for the Lenovo Thinkpad
+# x230 Tablet. Fix this.
+xsetwacom set 16 rotate $rotation
+xsetwacom set 17 rotate $rotation
+xsetwacom set 23 rotate $rotation

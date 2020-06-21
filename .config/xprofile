@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# This file runs when a DM logs you into a graphical session.
+# If you use startx/xinit like a Chad, this file will also be sourced.
+
+# Fix Gnome Apps Slow  Start due to failing services
+# Add this when you include flatpak in your system
+#dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
+screener &
+dynawall &			# set the background with the `dynawall` script
+mpd &			# music player daemon-you might prefer it as a service though
+xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &	# use Xresources colors/settings on startup
+xcompmgr &		# xcompmgr for transparency
+dunst &			# dunst for notifications
+unclutter &		# Remove mouse when idle
+redshift &		# adjusts the color temperature
+fcitx &			# Input method
+syncthing -no-browser	# peer-to-peer synchronization solution
+ferdi &			# combine messaging services into one application
+mailspring &		# TypeScript/Electron/React mail client with OAuth support
+checkup &		# Syncs repositories and downloads updates.
+newsup &		# check for new RSS entries for newsboat.
+remaps &		# run the remaps script, switching caps/esc and more; check it for more info

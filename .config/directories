@@ -9,3 +9,4 @@ cf	${XDG_CONFIG_HOME:-$HOME/.config}
 cac      ${XDG_CACHE_HOME:-$HOME/.cache}
 sc 	~/.local/bin
 mn	/mnt
+rr	~/.local/src
