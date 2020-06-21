@@ -20,12 +20,17 @@ textype() { \
 	biber --input-directory "$dir" "$base" &&
 	$command --output-directory="$dir" "$base" &&
 	$command --output-directory="$dir" "$base"
-	}
+}
+
+neat() { \
+	neatdir=$HOME/.local/bin/neatroff_make
+	"$neatdir/neatrefer/refer" -e <"$file" | "$neatdir/troff/pic/pic" | "$neatdir/troff/tbl/tbl" | "$neatdir/neateqn/eqn"
+}
 
 case "$file" in
-    *\.ms) preconv "$file" | refer -PS -e | groff -me -ms -kept -T pdf > "$base".pdf ;;
-	*\.mom) preconv "$file" | refer -PS -e | groff -mom -kept -T pdf > "$base".pdf ;;
-	*\.[0-9]) preconv "$file" | refer -PS -e | groff -mandoc -T pdf > "$base".pdf ;;
+	*\.ms) neat | roff -ms | pdf > "$base".pdf ;;
+	*\.mom) neat | roff -mom | pdf > "$base".pdf ;;
+	*\.[0-9]) neat | roff -mandoc | pdf > "$base".pdf ;;
 	*\.[rR]md) Rscript -e "require(rmarkdown); rmarkdown::render('$file', quiet=TRUE)" ;;
 	*\.tex) textype "$file" ;;
 	*\.md) pandoc "$file" --pdf-engine=xelatex -o "$base".pdf ;;

@@ -13,3 +13,4 @@ user_pref("general.warnOnAboutConfig", false);
 user_pref("javascript.use_us_english_locale", true);
 user_pref("privacy.spoof_english", 2);
 user_pref("signon.rememberSignons", false);
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);

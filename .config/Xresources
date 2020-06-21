@@ -2,8 +2,8 @@
 /* *.alpha: 0.8 */
 
 !! Set a default font and font size as below:
-dmenu.font: sans:size=12
 *.font: monospace:size=10
+dmenu.font: sans:size=12
 
 Xcursor.theme: capitaine-cursors
 
