@@ -1,5 +1,3 @@
-set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
-
 let mapleader =","
 
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))

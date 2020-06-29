@@ -8,5 +8,7 @@ vv	~/Videos
 cf	${XDG_CONFIG_HOME:-$HOME/.config}
 cac      ${XDG_CACHE_HOME:-$HOME/.cache}
 sc 	~/.local/bin
+si 	~/.local/bin/i3cmds
+sp 	~/.local/bin/personal
 mn	/mnt
 rr	~/.local/src
