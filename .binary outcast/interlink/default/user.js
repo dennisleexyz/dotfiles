@@ -18,7 +18,6 @@ user_pref("mail.serverDefaultStoreContractID", "@mozilla.org/msgstore/maildirsto
 user_pref("mail.spam.logging.enabled", true);
 user_pref("mail.spam.manualMark", true);
 user_pref("mail.spam.markAsReadOnSpam", true);
-user_pref("mail.SpellCheckBeforeSend", true);
 user_pref("network.cookie.cookieBehavior", 2);
 user_pref("network.http.altsvc.oe", true);
 user_pref("network.http.upgrade-insecure-requests", true);

@@ -1,0 +1,6 @@
+[pager]
+	log  = /usr/bin/diffr | less -R || perl /usr/share/git/diff-highlight/diff-highlight | less
+	show = /usr/bin/diffr | less -R || perl /usr/share/git/diff-highlight/diff-highlight | less
+	diff = /usr/bin/diffr | less -R || perl /usr/share/git/diff-highlight/diff-highlight | less
+[interactive]
+	diffFilter = /usr/bin/diffr
