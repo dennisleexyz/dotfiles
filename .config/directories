@@ -12,3 +12,9 @@ sc 	~/.local/bin
 si 	~/.local/bin/i3cmds
 sp 	~/.local/bin/personal
 rr	~/.local/src
+rf	~/.local/src/Font-Awesome
+rl	~/.local/src/LARBS
+rp	~/.local/src/privacy-haters
+rs	~/.local/src/st
+rv	~/.local/src/voidrice
+rw	~/.local/src/dennislee.xyz

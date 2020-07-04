@@ -1,4 +1,5 @@
 user_pref("app.eula.accepted", true);
+user_pref("app.update.enabled", false);
 user_pref("calendar.agendaListbox.soondays", 28);
 user_pref("calendar.integration.notify", false);
 user_pref("calendar.item.editInTab", true);
