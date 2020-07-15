@@ -11,8 +11,8 @@ sc  ~/.local/bin
 si 	~/.local/bin/i3cmds
 sp 	~/.local/bin/personal
 rr	~/.local/src
-rf	~/.local/src/Font-Awesome
-rl	~/.local/src/LARBS
+rf	~/.local/src/font-awesome
+rl	~/.local/src/larbs
 rp	~/.local/src/privacy-haters
 rs	~/.local/src/st
 rv	~/.local/src/voidrice

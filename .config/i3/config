@@ -56,8 +56,8 @@ client.focused_inactive	$transparent	$blue		$white		$darkblue	$darkblack
 client.urgent		$darkred	$darkred	$black		$darkred	$darkred
 client.background $black
 
+font pango:sans 10
 bar {
-	font pango:sans 10
 	colors {
 		background $darkblack
 		statusline $darkwhite
