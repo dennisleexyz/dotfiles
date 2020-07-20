@@ -61,8 +61,8 @@ interval=5
 label=📅
 interval=30
 
-[internet]
-interval=10
+#[internet]
+#interval=10
 
 #[help]
 #interval=once

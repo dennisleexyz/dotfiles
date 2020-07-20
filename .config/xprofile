@@ -9,6 +9,7 @@
 
 screener &
 dynawall &			# set the background with the `dynawall` script
+nm-applet &
 mpd &			# music player daemon-you might prefer it as a service though
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/Xresources &	# use Xresources colors/settings on startup
 xcompmgr &		# xcompmgr for transparency
@@ -21,4 +22,5 @@ ferdi &			# combine messaging services into one application
 birdtray &		# mail client with OAuth support
 checkup &		# Syncs repositories and downloads updates.
 newsup &		# check for new RSS entries for newsboat.
+lxqt-policykit-agent &
 remaps &		# run the remaps script, switching caps/esc and more; check it for more info

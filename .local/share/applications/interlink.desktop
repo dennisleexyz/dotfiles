@@ -2,7 +2,6 @@
 Encoding=UTF-8
 Version=1.0
 Type=Application
-NoDisplay=true
 Exec=/usr/lib/interlink/interlink %u
 Name=Interlink
 Comment=Custom definition for Interlink

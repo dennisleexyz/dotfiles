@@ -33,7 +33,6 @@ export WINEPREFIX="${XDG_DATA_HOME:-$HOME/.local/share}/wineprefixes/default"
 export KODI_DATA="${XDG_DATA_HOME:-$HOME/.local/share}/kodi"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
 export TMUX_TMPDIR="$XDG_RUNTIME_DIR"
-export ANDROID_SDK_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export ADB_VENDOR_KEY="${XDG_CONFIG_HOME:-$HOME/.config}/android"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
@@ -47,11 +46,15 @@ export GEM_SPEC_CACHE="${XDG_CONFIG_HOME:-$HOME/.config}/gem"
 export BUNDLE_USER_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/bundle"
 export BUNDLE_USER_CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/bundle"
 export BUNDLE_USER_PLUGIN="${XDG_DATA_HOME:-$HOME/.local/share}/bundle"
-export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"
+#export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"
 export VIMPERATOR_RUNTIME="${XDG_CONFIG_HOME:-$HOME/.config}/vimperator"
+#export MUTTATOR_INIT=":source $XDG_CONFIG_HOME/muttator/muttatorrc"
+export MUTTATOR_RUNTIME="${XDG_CONFIG_HOME:-$HOME/.config}/muttator"
 export ELINKS_CONFDIR="${XDG_CONFIG_HOME:-$HOME/.config}/elinks"
 export RXVT_SOCKET="$XDG_RUNTIME_DIR/urxvtd"
 export RANDFILE="$XDG_RUNTIME_DIR/rnd"
+#export CHEWING_USER_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/chewing"
+#export USERPROFILE="${XDG_DATA_HOME:-$HOME/.local/share}/chewing"
 
 # Other program settings:
 export DICS="/usr/share/stardict/dic/"
@@ -70,9 +73,12 @@ export QT_QPA_PLATFORMTHEME="gtk2"	# Have QT use gtk2 theme.
 export MOZ_USE_XINPUT2="1"		# Mozilla smooth scrolling/touchpads.
 export AWT_TOOLKIT="MToolkit wmname LG3D"	#May have to install wmname
 export _JAVA_AWT_WM_NONREPARENTING=1	# Fix for Java applications in dwm
+export HISTCONTROL=ignoreboth
 export GTK_IM_MODULE="fcitx"
 export QT_IM_MODULE="fcitx"
 export XMODIFIERS=@im="fcitx"
+#export XDG_SESSION_TYPE=x11
+#export GDK_BACKEND=x11
 
 [ -f /usr/share/LS_COLORS/dircolors.sh ] && . /usr/share/LS_COLORS/dircolors.sh
 
@@ -149,11 +155,11 @@ ex=🎯:\
 *.java=♨:\
 "
 
-[ ! -f ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ] && shortcuts >/dev/null 2>&1 &
+[ ! -f "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc" ] && shortcuts >/dev/null 2>&1 &
 
 if pacman -Qs libxft-bgra >/dev/null 2>&1; then
 	# Start graphical server on tty1 if not already running.
-	[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1  && exec startx
+	[ "$(tty)" = "/dev/tty1" ] && ! pidof Xorg >/dev/null 2>&1 && startx
 else
 	echo "\033[31mIMPORTANT\033[0m: Note that \033[32m\`libxft-bgra\`\033[0m must be installed for this build of dwm.
 Please run:
@@ -162,4 +168,4 @@ and replace \`libxft\`"
 fi
 
 # Switch escape and caps if tty and no passwd required:
-sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/null
+sudo -n loadkeys "${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap" 2>/dev/null

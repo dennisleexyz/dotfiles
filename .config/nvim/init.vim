@@ -18,8 +18,32 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'kovetskiy/sxhkd-vim'
 Plug 'ap/vim-css-color'
-Plug 'airblade/vim-gitgutter'
 Plug 'lilydjwg/fcitx.vim'
+Plug 'cespare/vim-toml'
+Plug 'weakish/rcshell.vim'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} " Code Completion
+Plug 'ctrlpvim/ctrlp.vim' " Fuzzy find files
+Plug 'kana/vim-textobj-user'
+Plug 'reedes/vim-textobj-quote'
+" Working with tags
+Plug 'alvan/vim-closetag'
+Plug 'tpope/vim-surround'
+" Syntax highlighting
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'unblevable/quick-scope'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" Motions
+Plug 'justinmk/vim-sneak'
+" Misc
+Plug 'tpope/vim-repeat'
+Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/git-messenger.vim'
+Plug 'dhruvasagar/vim-table-mode'
+" Plug 'takac/vim-hardtime'
+Plug 'tpope/vim-rsi'
 call plug#end()
 
 set bg=light
@@ -27,6 +51,7 @@ set go=a
 set mouse=a
 set nohlsearch
 set clipboard+=unnamedplus
+let g:hardtime_default_on = 1
 
 "set expandtab
 set shiftwidth=4
@@ -40,10 +65,13 @@ set tabstop=4
 	syntax on
 	set encoding=utf-8
 	set number relativenumber
+	" set termguicolors
+	set linebreak
+	" set tw=100
 " Enable autocompletion:
 	set wildmode=longest,list,full
-" Disables automatic commenting on newline:
-"	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" Disable auto comment
+	map <leader>C :setlocal formatoptions-=cro<CR>
 
 " Goyo plugin makes text more readable when writing prose:
 	map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
@@ -76,8 +104,11 @@ set tabstop=4
 	map <leader>s :!clear && shellcheck %<CR>
 
 " Open my bibliography file in split
-	map <leader>b :vsp<space>$BIB<CR>
-	map <leader>r :vsp<space>$REFER<CR>
+	" map <leader>b :vsp<space>$BIB<CR>
+	" map <leader>r :vsp<space>$REFER<CR>
+
+" Replace external filter with external command
+	nnoremap ! :!
 
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
@@ -97,7 +128,15 @@ set tabstop=4
 	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 	" autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
-	autocmd BufRead,BufNewFile *.tex set filetype=tex
+	" autocmd BufRead,BufNewFile *.tex set filetype=tex
+	autocmd BufRead,BufNewFile *.txt,*.md set filetype=markdown tw=72 | let g:textobj#quote#educate = 1
+	autocmd BufRead,BufNewFile *.diff set tw=72
+	" autocmd BufRead,BufNewFile *.html set expandtab shiftwidth=4 softtabstop=4 tabstop=4
+	autocmd BufRead,BufNewFile *.txt,*.md,*.html,*.css,*.js,*.jsx,*.ts,*.tsx set expandtab shiftwidth=2 softtabstop=2 tabstop=2
+	autocmd BufRead,BufNewFile *.py set noexpandtab shiftwidth=4 softtabstop=4 tabstop=4
+
+map <silent> <leader>qc <Plug>ReplaceWithCurly
+map <silent> <leader>qs <Plug>ReplaceWithStraight
 
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
@@ -112,6 +151,28 @@ set tabstop=4
 	autocmd BufWritePre * %s/\s\+$//e
 	autocmd BufWritepre * %s/\n\+\%$//e
 
+" ------Standard Bindings------
+" Basic file system commands
+	nnoremap <A-m> :!mv<Space>%<Space>
+
+" Fix indenting visual block
+	vmap < <gv
+	vmap > >gv
+
+" Shortcutting split navigation
+map <A-h> <C-w>h
+map <A-j> <C-w>j
+map <A-k> <C-w>k
+map <A-l> <C-w>l
+
+" Tab shortcuts
+nnoremap <A-p> :tabp<CR>
+nnoremap <A-n> :tabn<CR>
+
+" Alias write  nd quit to Q
+nnoremap <leader>q :wq<CR>
+nnoremap <leader>w :w<CR>
+
 " When shortcut files are updated, renew bash and ranger configs with new material:
 	autocmd BufWritePost files,directories !shortcuts
 " Run xrdb whenever Xdefaults or Xresources are updated.
@@ -121,5 +182,5 @@ set tabstop=4
 
 " Turns off highlighting on the bits of code that are changed, so the line that is changed is highlighted but the actual text that has changed stands out on the line and is readable.
 if &diff
-    highlight! link DiffText MatchParen
+	highlight! link DiffText MatchParen
 endif

@@ -14,16 +14,19 @@ $lf -remote "send $id set previewer ${XDG_CONFIG_HOME:-$HOME/.config}/lf/scope"
 
 # cmds/functions
 cmd open ${{
-    case $(file --mime-type $f -b) in
-	image/vnd.djvu|application/pdf|application/octet-stream) setsid -f zathura $fx >/dev/null 2>&1 ;;
-        text/*) $EDITOR $fx;;
-	image/x-xcf|image/svg+xml) setsid -f gimp $f >/dev/null 2>&1 ;;
-	image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\)\(_large\)*$" | sxiv -aio 2>/dev/null | lf-select ;;
-	audio/*) mpv --audio-display=no $f ;;
-	video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
-	application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
-        *) for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
-    esac
+	case $(file --mime-type $f -b) in
+		image/vnd.djvu|application/pdf|application/octet-stream) setsid -f zathura $fx >/dev/null 2>&1 ;;
+		text/*|application/csv|inode/x-empty|application/json) $EDITOR $fx;;
+		image/x-xcf|image/svg+xml) setsid -f gimp $f >/dev/null 2>&1 ;;
+		image/*) rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\)\(_large\)*$" | sxiv -aio 2>/dev/null | lf-select ;;
+		audio/*) mpv --audio-display=no $f ;;
+		video/*) setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+		application/pdf|application/vnd*|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+		application/vnd.openxmlformats-officedocument.wordprocessingml.document|application/vnd.oasis.opendocument.text) compiler $f >/dev/null 2>&1 &;;
+		application/zip) unzip $f >/dev/null 2>&1 &;;
+		application/x-xz|application/x-bzip2) tar -xf $f >/dev/null 2>&1 &;;
+		*) for f in $fx; do setsid -f xdg-open $f >/dev/null 2>&1; done;;
+	esac
 }}
 
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
@@ -60,8 +63,19 @@ cmd copyto ${{
 }}
 
 cmd bulkrename ${{
-    vidir
+	vidir
 }}
+
+cmd dragon %dragon-drag-and-drop -a -x $fx
+cmd cpdragon %cpdragon
+cmd mvdragon %mvdragon
+cmd dlfile %dlfile
+
+# Dragon Mapping
+map dr dragon
+map dm mvdragon
+map dc cpdragon
+map dl dlfile
 
 # Bindings
 map <c-f> $lf -remote "send $id select '$(fzf)'"
